@@ -19,7 +19,9 @@ public class RobotDrive extends OpMode
     private ElapsedTime runtime = new ElapsedTime();
     public KaizenRobot robot = null;
     
+    //detoes whether or not the claw is in the proccess of applying closing pressure
     boolean isHeld;
+    
     /*
      * Code to run ONCE when the driver hits INIT
      */
