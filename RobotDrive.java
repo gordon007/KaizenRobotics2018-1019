@@ -67,25 +67,23 @@ public class RobotDrive extends OpMode
         
         //Hold Claw until it is oppened with the right trigger
         //Move Claw if it is not Closed
-        if(isHeld)
+        
+        //if left trigger open, else stay if not closing
+        if(gamepad1.left_trigger > 0)
         {
-            //if left trigger open
-            if(gamepad1.left_trigger > 0)
-            {
-                robot.setClawPosition(0);
-                isHeld = false;
-            }
+            robot.setClawPosition(0);
+            isHeld = false;
         }
-        else
+        else if(!isHeld)
         {
-            //if right trigger close, nothing stay
-            if(gamepad1.right_trigger > 0)
-            {
-                robot.setClawPosition(1);
-                isHeld = true;
-            }
-            else
-                robot.setClawPosition(.5);
+        robot.setClawPosition(.5);
+        }
+        
+        //if right trigger close
+        if(gamepad1.right_trigger > 0)
+        {
+            robot.setClawPosition(1);
+            isHeld = true;
         }
         
         //Move base of claw on player input
